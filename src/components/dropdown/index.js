@@ -76,6 +76,7 @@ export default class Dropdown extends PureComponent {
     ],
 
     useNativeDriver: false,
+    autoWidth: false,
   };
 
   static propTypes = {
@@ -154,6 +155,7 @@ export default class Dropdown extends PureComponent {
     supportedOrientations: PropTypes.arrayOf(PropTypes.string),
 
     useNativeDriver: PropTypes.bool,
+    autoWidth: PropTypes.bool,
   };
 
   constructor(props) {
@@ -215,6 +217,7 @@ export default class Dropdown extends PureComponent {
       animationDuration,
       absoluteRTLLayout,
       useNativeDriver,
+      autoWidth,
     } = this.props;
 
     if (disabled) {
@@ -284,7 +287,7 @@ export default class Dropdown extends PureComponent {
 
       this.setState({
         modal: true,
-        width: right - left,
+        width: autoWidth ? 'auto' : right - left,
         top,
         left,
         leftInset,
